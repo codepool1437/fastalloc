@@ -49,10 +49,14 @@ frees one and allocates another (5M ops/thread).
 
 | Threads | malloc (Mops/s) | FastAlloc (Mops/s) | Speedup |
 |---------|-----------------|--------------------|---------|
-| 1       | _run `make bench` and paste your numbers_ | | |
-| 2       | | | |
-| 4       | | | |
-| 8       | | | |
+| 1       | 21.4            | 123.6              | 5.77x   |
+| 2       | 32.0            | 188.4              | 5.89x   |
+| 4       | 58.2            | 328.3              | 5.64x   |
+| 8       | 80.5            | 443.9              | 5.52x   |
+
+These measurements were collected on Windows with the allocator's `mmap` call
+replaced by an out-of-tree `VirtualAlloc` compatibility shim for validation.
+Run `make bench` on Linux to obtain directly comparable glibc results.
 
 ## Limitations / future work
 
